@@ -35,7 +35,7 @@ jobs:
       run: mvn -B package --file java-servlet-project/pom.xml
     - name: Caching dependencies
       run: mvn --batch-mode --update-snapshots verify --file java-servlet-project/pom.xml
-    - run: mkdir staging && cp target/*.jar staging
+    - run: mkdir staging && cp java-servlet-project/target/*.war staging
     - uses: actions/upload-artifact@v3
       with:
         name: Package
