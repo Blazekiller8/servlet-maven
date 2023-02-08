@@ -1,16 +1,19 @@
 package com.example.servlets;
 
-import java.io.*;
 import jakarta.servlet.*;
 // import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import java.io.*;
 
 // @WebServlet("/cookie")
 public class CookieServlet extends HttpServlet {
+
   private static final long serialVersionUID = 1L;
 
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  protected void doGet(
+    HttpServletRequest request,
+    HttpServletResponse response
+  ) throws ServletException, IOException {
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
 
@@ -35,8 +38,10 @@ public class CookieServlet extends HttpServlet {
     }
   }
 
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  protected void doPost(
+    HttpServletRequest request,
+    HttpServletResponse response
+  ) throws ServletException, IOException {
     doGet(request, response);
   }
 }
