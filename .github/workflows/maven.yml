@@ -25,7 +25,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '19'
-        distribution: 'openjdk'
+        distribution: 'temurin'
         cache: maven
     - name: Prettier Java Action
       # You may pin to the exact commit or the version.
@@ -33,6 +33,13 @@ jobs:
       uses: lukasmwerner/prettier_action_java@v1.1.1
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Caching dependencies
+      run: mvn --batch-mode --update-snapshots verify
+    - run: mkdir staging && cp target/*.jar staging
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Package
+        path: staging
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
