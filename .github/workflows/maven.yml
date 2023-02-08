@@ -32,9 +32,9 @@ jobs:
       # uses: lukasmwerner/prettier_action_java@ed1b1c8ee98efb25adda9f54e1a28c19d246b70c
       uses: lukasmwerner/prettier_action_java@v1.1.1
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file java-servlet-project/pom.xml
     - name: Caching dependencies
-      run: mvn --batch-mode --update-snapshots verify
+      run: mvn --batch-mode --update-snapshots verify --file java-servlet-project/pom.xml
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v3
       with:
